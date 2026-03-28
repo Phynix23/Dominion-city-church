@@ -4,52 +4,52 @@ import './MarqueeGrid.css';
 
 const marqueeImages = [
   { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Worship Night',
+    src: '/images/grid/mpa1.jpeg', 
+    label: 'Dr. David Ogbueli',
     description: 'Sunday Service',
+    category: 'Activating the riches of God'
+  },
+  { 
+    src: '/images/grid/ss1.jpeg', 
+    label: 'Welcome to Church',
+    description: 'We are happy to have you!',
     category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Community Impact',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
+    src: '/images/grid/ss2.jpeg', 
+    // // label: 'The Edge Youth',
+    //  description: 'Sunday Service',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'The Edge Youth',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
+    src: '/images/grid/ss3.jpeg', 
+    // // label: 'Baptism Service',
+    // description: 'Free Transportation',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Baptism Service',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
+    src: '/images/grid/ss4.jpeg', 
+    // // label: 'Prayer Meeting',
+    //  description: 'Sunday Service',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Prayer Meeting',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
+    src: '/images/grid/ss7.jpeg', 
+    // // label: 'Children\'s Ministry',
+    // description: 'Free Transportation',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Children\'s Ministry',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
+    src: '/images/grid/mpa2.jpeg', 
+    // // label: 'Women of Impact',
+    //  description: 'Sunday Service',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Women of Impact',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Men of Honour',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
+    src: '/images/grid/praiz12.jpeg', 
+    label: 'Praise',
+    description: 'Enter his court with praise',
+    category: 'In the presence of God their is fullness of joy'
   },
   { 
     src: '/images/grid/Sunday-service.jpeg', 

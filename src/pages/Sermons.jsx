@@ -1,4 +1,3 @@
-// src/pages/Sermons.jsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
@@ -86,7 +85,6 @@ const seriesList = ['All Series', 'Dominion Life', 'Leadership Series', 'Faith F
 const Sermons = () => {
   const [selectedSeries, setSelectedSeries] = useState('All Series');
   const [selectedSermon, setSelectedSermon] = useState(sermons[0]);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   const filteredSermons = selectedSeries === 'All Series'
     ? sermons
@@ -94,7 +92,6 @@ const Sermons = () => {
 
   const handleWatch = (sermon) => {
     setSelectedSermon(sermon);
-    setIsPlaying(true);
     toast.info(`Now playing: ${sermon.title}`);
   };
 

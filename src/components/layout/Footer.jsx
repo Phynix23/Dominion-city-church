@@ -15,10 +15,18 @@ const Footer = () => {
             <h3>Dominion City</h3>
             <p>Raising Leaders, Impacting Generations</p>
             <div className="social-links">
-              <a href="#" aria-label="Facebook"><FaFacebookF /></a>
-              <a href="#" aria-label="Instagram"><FaInstagram /></a>
-              <a href="#" aria-label="YouTube"><FaYoutube /></a>
-              <a href="#" aria-label="Twitter"><FaTwitter /></a>
+              <a href="https://facebook.com/dominioncity" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <FaFacebookF />
+              </a>
+              <a href="https://instagram.com/dominioncity" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <FaInstagram />
+              </a>
+              <a href="https://youtube.com/dominioncity" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <FaYoutube />
+              </a>
+              <a href="https://twitter.com/dominioncity" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <FaTwitter />
+              </a>
             </div>
           </div>
 
@@ -59,7 +67,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Dominion City. All Rights Reserved. | Website by <a href="#">Abuoma David</a></p>
+          <p>&copy; {currentYear} Dominion City. All Rights Reserved. | Website by <a href="https://github.com/Phynix23" target="_blank" rel="noopener noreferrer">Abuoma David</a></p>
         </div>
       </div>
     </footer>

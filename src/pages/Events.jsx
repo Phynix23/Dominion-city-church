@@ -1,8 +1,7 @@
-// src/pages/Events.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { FaClock, FaMapMarkerAlt, FaTag, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaClock, FaMapMarkerAlt, FaTag } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import './Events.css';
 
@@ -75,7 +74,6 @@ const categories = ['all', 'conference', 'training', 'youth', 'women', 'men', 'o
 const Events = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const filteredEvents = events.filter(event => {
     const matchesCategory = selectedCategory === 'all' || event.category === selectedCategory;

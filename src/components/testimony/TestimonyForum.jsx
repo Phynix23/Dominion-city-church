@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  FaUser, FaCalendar, FaHeart, FaShare, FaComment, 
-  FaThumbsUp, FaFilter, FaSearch, FaTimes, FaStar,
+  FaUser, FaCalendar, FaHeart, FaShare, 
+  FaThumbsUp, FaSearch, FaTimes, FaStar,
   FaPrayingHands, FaHandsHelping, FaChurch, FaHome
 } from 'react-icons/fa';
 import { toast } from 'react-toastify';

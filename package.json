@@ -1,12 +1,13 @@
 {
   "name": "dominion-city-church",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@paystack/inline-js": "^2.22.8",
     "@stripe/stripe-js": "^8.11.0",
-    "@tanstack/react-query": "^5.12.0",
+    "@tanstack/react-query": "^5.95.0",
     "axios": "^1.6.2",
     "date-fns": "^2.30.0",
     "emailjs-com": "^3.2.0",
@@ -28,10 +29,13 @@
     "yup": "^1.7.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env BROWSER=none react-scripts start",
+    "start:clear": "rimraf node_modules/.cache && cross-env BROWSER=none react-scripts start",
+    "build": "cross-env CI=false react-scripts build",
+    "build:prod": "cross-env CI=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clear": "rimraf node_modules/.cache"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +55,8 @@
     ]
   },
   "devDependencies": {
-    "ajv": "^8.12.0"
+    "ajv": "^8.12.0",
+    "cross-env": "^7.0.3",
+    "rimraf": "^5.0.5"
   }
 }

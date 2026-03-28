@@ -5,9 +5,14 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HelmetProvider } from 'react-helmet-async';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './index.css';
+import './styles/index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
+// Enable Fast Refresh for development
+if (process.env.NODE_ENV === 'development' && module.hot) {
+  module.hot.accept();
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,7 +28,12 @@ root.render(
   <React.StrictMode>
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+        <BrowserRouter
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <App />
           <ToastContainer
             position="top-right"
@@ -43,4 +53,7 @@ root.render(
   </React.StrictMode>
 );
 
-serviceWorkerRegistration.register();
+// Only register service worker in production
+if (process.env.NODE_ENV === 'production') {
+  serviceWorkerRegistration.register();
+}

@@ -1,4 +1,3 @@
-// src/utils/emailService.js
 import emailjs from '@emailjs/browser';
 
 class EmailService {
@@ -13,7 +12,9 @@ class EmailService {
       newsletter: process.env.REACT_APP_EMAILJS_NEWSLETTER_TEMPLATE
     };
     
-    emailjs.init(this.publicKey);
+    if (this.publicKey && this.publicKey !== 'your_public_key') {
+      emailjs.init(this.publicKey);
+    }
   }
 
   async sendPrayerRequest(data) {

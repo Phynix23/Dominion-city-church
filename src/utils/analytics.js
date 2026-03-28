@@ -92,7 +92,6 @@ class Analytics {
 
     // Facebook Pixel
     if (typeof window !== 'undefined' && window.fbq) {
-      // Map standard events to Facebook's standard events
       const fbEventMap = {
         'donation': 'Purchase',
         'sermon_watch': 'WatchVideo',
@@ -122,7 +121,6 @@ class Analytics {
   // Send to your backend API
   async sendToBackend(eventName, data) {
     try {
-      // Don't send in development unless specified
       if (process.env.NODE_ENV === 'development' && !process.env.REACT_APP_ANALYTICS_DEBUG) {
         return;
       }
@@ -145,7 +143,6 @@ class Analytics {
         console.warn('Analytics backend error:', response.status);
       }
     } catch (error) {
-      // Silently fail - don't disrupt user experience
       if (process.env.NODE_ENV === 'development') {
         console.warn('Analytics backend unavailable:', error);
       }
@@ -163,17 +160,17 @@ class Analytics {
     });
   }
 
-  // Track sermon watching
-  trackSermonWatch(sermonId, sermonTitle, duration, completed = false) {
+  // Track sermon watching - FIXED: removed undefined sermonDuration
+  trackSermonWatch(sermonId, sermonTitle, duration, completed = false, totalDuration = 3600) {
     this.trackEvent('sermon_watch', {
       sermon_id: sermonId,
       sermon_title: sermonTitle,
       duration_seconds: duration,
       completed,
-      progress_percentage: completed ? 100 : (duration / (sermonDuration || 3600)) * 100,
+      progress_percentage: completed ? 100 : Math.min(100, (duration / totalDuration) * 100),
     });
 
-    // Track engagement if watched > 5 minutes
+    // Track engagement if watched > 5 minutes (300 seconds)
     if (duration > 300) {
       this.trackEvent('sermon_engagement', {
         sermon_id: sermonId,
@@ -229,7 +226,7 @@ class Analytics {
     
     const trackEngagement = () => {
       const duration = Math.floor((Date.now() - startTime) / 1000);
-      if (duration >= 30) { // Only track if > 30 seconds
+      if (duration >= 30) {
         this.trackEvent('engagement_time', {
           duration_seconds: duration,
           page_url: window.location.href,
@@ -239,7 +236,6 @@ class Analytics {
 
     window.addEventListener('beforeunload', trackEngagement);
     
-    // Also track on page hide (for single-page apps)
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         trackEngagement();
@@ -252,7 +248,6 @@ class Analytics {
 
   // Helper: Hash email for privacy
   hashEmail(email) {
-    // Simple hash for privacy - in production, use a proper hashing library
     let hash = 0;
     for (let i = 0; i < email.length; i++) {
       hash = ((hash << 5) - hash) + email.charCodeAt(i);

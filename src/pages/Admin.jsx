@@ -1,7 +1,9 @@
+// src/pages/Admin.jsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaPlus, FaEdit, FaTrash, FaCheck, FaEye, FaPray, FaVideo } from 'react-icons/fa';
+import { FaPlus, FaEdit, FaTrash, FaCheck } from 'react-icons/fa';
 import { useAdmin } from '../context/AdminContext';
+// eslint-disable-next-line no-unused-vars
 import { toast } from 'react-toastify';
 import './Admin.css';
 
@@ -23,9 +25,8 @@ const Admin = () => {
     approveTestimony,
     deleteTestimony,
     prayerRequests,
-    deletePrayerRequest,
-    sermons,
-    addSermon
+    deletePrayerRequest
+    // Removed sermons and addSermon since they're not used
   } = useAdmin();
 
   const [formData, setFormData] = useState({

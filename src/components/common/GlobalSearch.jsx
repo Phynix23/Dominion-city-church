@@ -10,12 +10,10 @@ const GlobalSearch = () => {
   const [allContent, setAllContent] = useState([]);
 
   useEffect(() => {
-    // Load all content from localStorage and static data
     const events = JSON.parse(localStorage.getItem('admin_events') || '[]');
     const sermons = JSON.parse(localStorage.getItem('admin_sermons') || '[]');
     const testimonies = JSON.parse(localStorage.getItem('admin_testimonies') || '[]');
     
-    // Static content
     const staticContent = [
       { type: 'page', title: 'Home', path: '/', content: 'Welcome to Dominion City' },
       { type: 'page', title: 'About Us', path: '/about', content: 'Our story and beliefs' },
@@ -119,7 +117,8 @@ const GlobalSearch = () => {
         )}
       </AnimatePresence>
 
-      <style jsx>{`
+      {/* IMPORTANT: NO "jsx" ATTRIBUTE HERE */}
+      <style>{`
         .search-trigger {
           background: none;
           border: none;

@@ -7,6 +7,7 @@ import EventsSection from '../components/home/EventsSection';
 import SermonsSection from '../components/home/SermonsSection';
 import GivingSection from '../components/home/GivingSection';
 import TestimonyForum from '../components/testimony/TestimonyForum';
+import BooksSection from '../components/books/BooksSection';
 import { motion } from 'framer-motion';
 
 const Home = () => {
@@ -22,7 +23,8 @@ const Home = () => {
       <AboutSection />
       <MinistriesSection />
       <EventsSection />
-      <TestimonyForum />  {/* Add this line */}
+      <TestimonyForum />
+      <BooksSection />
       <SermonsSection />
       <GivingSection />
     </motion.main>

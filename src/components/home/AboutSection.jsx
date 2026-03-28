@@ -1,4 +1,3 @@
-// src/components/home/AboutSection.jsx
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -17,7 +16,6 @@ const AboutSection = () => {
     }
   }, [isInView, controls]);
 
-  // Updated stats - only changed the values, kept the labels exactly the same
   const stats = [
     { value: 30, label: 'Years of Impact', suffix: '+' },
     { value: 1000, label: 'Branches', suffix: '+' },

@@ -19,6 +19,11 @@
       "src": "apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
+    },
+    {
+      "src": "DC logo.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
     }
   ],
   "start_url": ".",

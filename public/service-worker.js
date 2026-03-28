@@ -1,23 +1,23 @@
-// public/service-worker.js
 const CACHE_NAME = 'dominion-city-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/static/css/main.css',
-  '/static/js/main.js',
   '/manifest.json',
   '/images/offline.jpg',
 ];
 
+// Install event - cache assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('Opened cache');
+      console.log('Cache opened');
       return cache.addAll(urlsToCache);
     })
   );
+  self.skipWaiting();
 });
 
+// Fetch event - serve from cache if available
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
@@ -38,6 +38,7 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
+// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
@@ -51,4 +52,5 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
+  self.clients.claim();
 });

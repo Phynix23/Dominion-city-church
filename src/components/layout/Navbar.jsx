@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaHeart, FaBars, FaTimes } from 'react-icons/fa';
+import ThemeToggle from '../common/ThemeToggle';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,9 +28,9 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { path: '/', label: 'Home' },
+    { path: '/', label: 'HOME' },
     {
-      label: 'About Us',
+      label: 'ABOUT US',
       dropdown: [
         { path: '/about#story', label: 'Our Story' },
         { path: '/about#beliefs', label: 'Our Beliefs' },
@@ -37,7 +38,7 @@ const Navbar = () => {
       ],
     },
     {
-      label: 'Ministries',
+      label: 'MINISTRIES',
       dropdown: [
         { path: '/ministries#workforce', label: 'Workforce' },
         { path: '/ministries#youth', label: 'The Edge Youth' },
@@ -45,15 +46,15 @@ const Navbar = () => {
         { path: '/ministries#men', label: 'Men of Honour' },
       ],
     },
-    { path: '/events', label: 'Events' },
-    { path: '/sermons', label: 'Sermons' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/events', label: 'EVENTS' },
+    { path: '/sermons', label: 'SERMONS' },
+    { path: '/books', label: 'BOOKS' },  // ← ADDED BOOKS LINK
+    { path: '/contact', label: 'CONTACT' },
   ];
 
   return (
     <>
       <style>{`
-        /* Navbar Styles */
         .navbar {
           position: fixed;
           top: 0;
@@ -73,35 +74,23 @@ const Navbar = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          flex-wrap: wrap;
         }
         
         .logo {
           text-decoration: none;
+          flex-shrink: 0;
         }
         
-        .logo-main {
-          display: block;
-          font-family: var(--font-primary);
-          font-size: 28px;
-          font-weight: 700;
-          color: var(--primary-blue);
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          line-height: 1.2;
-        }
-        
-        .logo-sub {
-          display: block;
-          font-size: 12px;
-          color: var(--text-gray);
-          letter-spacing: 3px;
-          text-transform: uppercase;
+        .logo img {
+          height: 50px;
+          width: auto;
         }
         
         .nav-menu {
           display: flex;
           list-style: none;
-          gap: 30px;
+          gap: 25px;
           margin: 0;
           padding: 0;
           align-items: center;
@@ -112,22 +101,7 @@ const Navbar = () => {
           display: inline-block;
         }
         
-        .nav-menu a {
-          color: var(--text-light);
-          text-decoration: none;
-          font-size: 14px;
-          font-weight: 500;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          padding: 8px 0;
-          transition: all 0.3s ease;
-          position: relative;
-          background: none;
-          border: none;
-          cursor: pointer;
-          font-family: inherit;
-        }
-        
+        .nav-menu a,
         .dropdown-trigger {
           color: var(--text-light);
           text-decoration: none;
@@ -142,6 +116,7 @@ const Navbar = () => {
           border: none;
           cursor: pointer;
           font-family: inherit;
+          white-space: nowrap;
         }
         
         .nav-menu a::before,
@@ -174,8 +149,8 @@ const Navbar = () => {
           left: 0;
           background: rgba(10, 10, 10, 0.95);
           backdrop-filter: blur(10px);
-          min-width: 220px;
-          padding: 15px 0;
+          min-width: 200px;
+          padding: 12px 0;
           border-radius: 8px;
           list-style: none;
           box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
@@ -188,12 +163,13 @@ const Navbar = () => {
         }
         
         .dropdown a {
-          padding: 10px 25px;
+          padding: 10px 20px;
           display: block;
-          font-size: 14px;
+          font-size: 13px;
           text-transform: none;
           letter-spacing: 0.5px;
           color: var(--text-gray);
+          white-space: nowrap;
         }
         
         .dropdown a:hover {
@@ -208,7 +184,7 @@ const Navbar = () => {
         .give-btn {
           background: var(--primary-blue);
           color: var(--white) !important;
-          padding: 10px 25px !important;
+          padding: 8px 20px !important;
           border-radius: 30px;
           font-weight: 600;
           border: 2px solid transparent;
@@ -237,7 +213,23 @@ const Navbar = () => {
           cursor: pointer;
         }
         
-        /* Mobile Styles */
+        /* Theme Toggle Styles */
+        .theme-toggle-wrapper {
+          display: flex;
+          align-items: center;
+        }
+        
+        @media (max-width: 992px) {
+          .nav-menu {
+            gap: 20px;
+          }
+          
+          .nav-menu a,
+          .dropdown-trigger {
+            font-size: 12px;
+          }
+        }
+        
         @media (max-width: 768px) {
           .nav-toggle {
             display: block;
@@ -264,16 +256,30 @@ const Navbar = () => {
             text-align: center;
           }
           
+          .nav-menu a,
+          .dropdown-trigger {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            white-space: normal;
+          }
+          
           .dropdown {
             position: static;
-            opacity: 1;
-            visibility: visible;
-            transform: none;
             background: transparent;
+            backdrop-filter: none;
             box-shadow: none;
             display: none;
             padding: 10px 0 0 20px;
             border: none;
+            width: 100%;
+          }
+          
+          .dropdown a {
+            text-align: center;
+            padding: 8px;
+            white-space: normal;
           }
           
           .has-dropdown.active .dropdown {
@@ -281,7 +287,21 @@ const Navbar = () => {
           }
           
           .dropdown-trigger {
-            width: 100%;
+            justify-content: center;
+          }
+          
+          .give-btn {
+            display: inline-flex;
+            width: auto;
+            margin-top: 10px;
+          }
+          
+          .logo img {
+            height: 40px;
+          }
+          
+          .theme-toggle-wrapper {
+            margin: 10px 0;
             justify-content: center;
           }
         }
@@ -290,8 +310,15 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="nav-container">
           <Link to="/" className="logo">
-            <span className="logo-main">DOMINION CITY</span>
-            <span className="logo-sub">Raising Leaders, Impacting Generations</span>
+            <img 
+              src="/images/logo.png" 
+              alt="Dominion City" 
+              style={{ height: '50px', width: 'auto' }}
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.parentElement.innerHTML = '<span style="color: var(--primary-blue); font-size: 22px; font-weight: bold;">DOMINION CITY</span>';
+              }}
+            />
           </Link>
 
           <button className="nav-toggle" onClick={toggleMobileMenu} aria-label="Toggle menu">
@@ -337,6 +364,13 @@ const Navbar = () => {
                 )}
               </li>
             ))}
+            
+            {/* THEME TOGGLE */}
+            <li className="theme-toggle-wrapper">
+              <ThemeToggle />
+            </li>
+            
+            {/* GIVE BUTTON */}
             <li>
               <Link to="/give" className="give-btn">
                 GIVE <FaHeart />

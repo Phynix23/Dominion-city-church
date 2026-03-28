@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 /* ========== CSS VARIABLES ========== */
 :root {
   --primary-blue: #4169E1;
@@ -14,11 +16,19 @@
   --text-offwhite: #F1F5F9;
   --text-gray: #CBD5E1;
   --text-dark: #1E293B;
+  --overlay-dark: rgba(0, 0, 0, 0.7);
+  --overlay-blue: rgba(65, 105, 225, 0.2);
+  --overlay-light: rgba(255, 255, 255, 0.1);
+  --gradient-primary: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  --gradient-light: linear-gradient(135deg, var(--white-off), var(--white-cream));
+  --gradient-hero: linear-gradient(135deg, var(--dark-bg), var(--primary-blue-dark));
   --font-primary: 'Cormorant Garamond', serif;
   --font-secondary: 'Inter', sans-serif;
   --transition-smooth: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  --shadow-blue: 0 5px 20px rgba(65, 105, 225, 0.3);
+  --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --shadow-elegant: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+  --shadow-blue: 0 5px 20px rgba(65, 105, 225, 0.3);
+  --shadow-hover: 0 20px 40px -15px rgba(65, 105, 225, 0.4);
 }
 
 /* ========== RESET & BASE ========== */
@@ -35,10 +45,11 @@ html {
 
 body {
   font-family: var(--font-secondary);
-  color: var(--text-light);
+  color: var(--text-offwhite);
   background-color: var(--dark-bg);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,6 +62,11 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+section {
+  position: relative;
+  overflow: hidden;
 }
 
 /* ========== BUTTONS ========== */
@@ -96,22 +112,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-blue);
 }
 
-.btn-link {
-  color: var(--primary-blue);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  transition: var(--transition-smooth);
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.btn-link:hover {
-  gap: 10px;
-  color: var(--text-light);
-}
-
 /* ========== SECTION HEADERS ========== */
 .section-header {
   text-align: center;
@@ -137,13 +137,6 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
 }
 
-.section-description {
-  color: var(--text-gray);
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 16px;
-}
-
 .divider {
   width: 80px;
   height: 2px;
@@ -152,22 +145,53 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
-/* ========== ANIMATIONS ========== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.divider i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--primary-blue);
+  background: var(--dark-bg);
+  padding: 0 20px;
+  font-size: 16px;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: none; opacity: 1; }
+  7% { transform: skew(-0.5deg, -0.9deg); opacity: 0.75; }
+  10% { transform: none; opacity: 1; }
+  27% { transform: none; opacity: 1; }
+  30% { transform: skew(0.8deg, -0.1deg); opacity: 0.75; }
+  35% { transform: none; opacity: 1; }
+  52% { transform: none; opacity: 1; }
+  55% { transform: skew(-1deg, 0.2deg); opacity: 0.75; }
+  50% { transform: none; opacity: 1; }
+  72% { transform: none; opacity: 1; }
+  75% { transform: skew(0.4deg, 1deg); opacity: 0.75; }
+  80% { transform: none; opacity: 1; }
+  95% { transform: none; opacity: 1; }
+  100% { transform: none; opacity: 1; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .animate-on-scroll {
@@ -179,6 +203,521 @@ h1, h2, h3, h4, h5, h6 {
 .animate-on-scroll.animate {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ========== LIGHT THEME ========== */
+.light-theme {
+  --primary-blue: #4169E1;
+  --primary-blue-light: #6B8CFF;
+  --primary-blue-dark: #2E4DB0;
+  --secondary-blue: #E8F0FE;
+  --white: #FFFFFF;
+  --dark-bg: #F8FAFC;
+  --darker-bg: #FFFFFF;
+  --text-light: #1E293B;
+  --text-offwhite: #334155;
+  --text-gray: #475569;
+  --text-dark: #0F172A;
+  --shadow-elegant: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  --shadow-blue: 0 5px 20px rgba(65, 105, 225, 0.2);
+}
+
+.light-theme body {
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+}
+
+/* Light Theme Navbar */
+.light-theme .navbar {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.light-theme .nav-menu a,
+.light-theme .dropdown-trigger {
+  color: var(--text-dark);
+}
+
+.light-theme .nav-menu a:hover,
+.light-theme .nav-menu a.active,
+.light-theme .dropdown-trigger:hover {
+  color: var(--primary-blue);
+}
+
+.light-theme .dropdown {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(65, 105, 225, 0.2);
+}
+
+.light-theme .dropdown a {
+  color: var(--text-gray);
+}
+
+.light-theme .dropdown a:hover {
+  background: rgba(65, 105, 225, 0.1);
+  color: var(--primary-blue);
+}
+
+.light-theme .give-btn {
+  background: var(--primary-blue);
+  color: white !important;
+  border: 1px solid white;
+}
+
+.light-theme .give-btn:hover {
+  background: transparent;
+  color: var(--primary-blue) !important;
+  border-color: var(--primary-blue);
+}
+
+/* Light Theme Hero Section - WHITE TEXT */
+.light-theme .slide-overlay {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.light-theme .slide-content h1,
+.light-theme .slide-content p {
+  color: #FFFFFF !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.light-theme .slider-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.light-theme .slider-btn:hover {
+  background: #FFFFFF;
+  color: var(--primary-blue);
+}
+
+.light-theme .dot {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.light-theme .dot.active {
+  background: #FFFFFF;
+}
+
+/* Light Theme Section Headers */
+.light-theme .section-header h2 {
+  color: var(--text-dark);
+}
+
+.light-theme .section-subtitle {
+  color: var(--primary-blue);
+}
+
+/* Light Theme About Section */
+.light-theme .about-section {
+  background: linear-gradient(135deg, var(--darker-bg) 0%, var(--secondary-blue) 100%);
+}
+
+.light-theme .about-text .lead {
+  color: var(--primary-blue);
+}
+
+.light-theme .about-text p {
+  color: var(--text-gray);
+}
+
+.light-theme .stat-number {
+  color: var(--primary-blue);
+}
+
+.light-theme .stat-label {
+  color: var(--text-gray);
+}
+
+.light-theme .image-caption h4 {
+  color: var(--primary-blue);
+}
+
+.light-theme .image-caption p {
+  color: var(--text-gray);
+}
+
+/* Light Theme Cards */
+.light-theme .ministry-card,
+.light-theme .event-card,
+.light-theme .sermon-card,
+.light-theme .testimony-card {
+  background: var(--white);
+  border: 1px solid rgba(65, 105, 225, 0.1);
+  box-shadow: var(--shadow-elegant);
+}
+
+.light-theme .ministry-card:hover,
+.light-theme .event-card:hover,
+.light-theme .sermon-card:hover,
+.light-theme .testimony-card:hover {
+  box-shadow: var(--shadow-blue);
+}
+
+.light-theme .ministry-card h3,
+.light-theme .event-card h3,
+.light-theme .sermon-card h3,
+.light-theme .testimony-card h3 {
+  color: var(--text-dark);
+}
+
+.light-theme .ministry-card p,
+.light-theme .event-card p,
+.light-theme .sermon-card p,
+.light-theme .testimony-card p {
+  color: var(--text-gray);
+}
+
+.light-theme .ministry-details {
+  color: var(--primary-blue);
+}
+
+.light-theme .btn-link {
+  color: var(--primary-blue);
+}
+
+.light-theme .btn-link:hover {
+  color: var(--primary-blue-dark);
+}
+
+/* Light Theme Events */
+.light-theme .event-meta {
+  color: var(--primary-blue);
+}
+
+.light-theme .tag {
+  background: rgba(65, 105, 225, 0.1);
+  color: var(--primary-blue);
+}
+
+/* Light Theme Sermons */
+.light-theme .sermon-meta {
+  color: var(--primary-blue);
+}
+
+.light-theme .btn-icon {
+  color: var(--text-gray);
+}
+
+.light-theme .btn-icon:hover {
+  color: var(--primary-blue);
+}
+
+/* Light Theme Testimonies */
+.light-theme .testimony-card-header h4 {
+  color: var(--text-dark);
+}
+
+.light-theme .testimony-date {
+  color: var(--text-gray);
+}
+
+.light-theme .testimony-excerpt {
+  color: var(--text-gray);
+}
+
+.light-theme .testimony-card-actions button {
+  color: var(--text-gray);
+}
+
+.light-theme .testimony-card-actions button:hover {
+  color: var(--primary-blue);
+  background: rgba(65, 105, 225, 0.1);
+}
+
+/* Light Theme Giving Section */
+.light-theme .giving-section {
+  background: linear-gradient(135deg, var(--secondary-blue), var(--darker-bg));
+}
+
+.light-theme .giving-content > p {
+  color: var(--text-gray);
+}
+
+.light-theme .giving-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(65, 105, 225, 0.2);
+}
+
+.light-theme .giving-card h3 {
+  color: var(--text-dark);
+}
+
+.light-theme .giving-card p {
+  color: var(--text-gray);
+}
+
+.light-theme .bank-details {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--primary-blue);
+}
+
+.light-theme .bank-details h4 {
+  color: var(--primary-blue);
+}
+
+.light-theme .bank-details p {
+  color: var(--text-dark);
+}
+
+/* Light Theme Footer */
+.light-theme .footer {
+  background: var(--darker-bg);
+  border-top: 3px solid var(--primary-blue);
+}
+
+.light-theme .footer-info p,
+.light-theme .footer-links a,
+.light-theme .footer-contact p {
+  color: var(--text-gray);
+}
+
+.light-theme .footer-links a:hover {
+  color: var(--primary-blue);
+}
+
+.light-theme .service-times {
+  border-top: 1px solid rgba(65, 105, 225, 0.2);
+}
+
+.light-theme .service-times h5 {
+  color: var(--primary-blue);
+}
+
+.light-theme .footer-bottom {
+  border-top: 1px solid rgba(65, 105, 225, 0.1);
+  color: var(--text-gray);
+}
+
+.light-theme .footer-bottom a {
+  color: var(--primary-blue);
+}
+
+/* Light Theme Forms */
+.light-theme .form-group input,
+.light-theme .form-group select,
+.light-theme .form-group textarea {
+  background: var(--white);
+  border: 1px solid rgba(65, 105, 225, 0.3);
+  color: var(--text-dark);
+}
+
+.light-theme .form-group input:focus,
+.light-theme .form-group select:focus,
+.light-theme .form-group textarea:focus {
+  border-color: var(--primary-blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.1);
+}
+
+.light-theme .form-group input::placeholder,
+.light-theme .form-group textarea::placeholder {
+  color: var(--text-gray);
+}
+
+/* Light Theme Modals */
+.light-theme .modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.light-theme .modal-content {
+  background: var(--white);
+  color: var(--text-dark);
+}
+
+.light-theme .modal-close {
+  color: var(--text-gray);
+}
+
+.light-theme .modal-close:hover {
+  color: var(--primary-blue);
+}
+
+/* Light Theme Search */
+.light-theme .search-modal {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.light-theme .search-container {
+  background: var(--white);
+}
+
+.light-theme .search-container input {
+  color: var(--text-dark);
+}
+
+.light-theme .search-container input::placeholder {
+  color: var(--text-gray);
+}
+
+.light-theme .search-result-item {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+.light-theme .search-result-item:hover {
+  background: rgba(65, 105, 225, 0.05);
+}
+
+.light-theme .result-content h4 {
+  color: var(--text-dark);
+}
+
+.light-theme .result-content p {
+  color: var(--text-gray);
+}
+
+.light-theme .no-results,
+.light-theme .search-hint {
+  color: var(--text-gray);
+}
+
+/* Light Theme Contact Page */
+.light-theme .contact-hero {
+  background: linear-gradient(135deg, var(--dark-bg), var(--secondary-blue));
+}
+
+.light-theme .contact-hero h1,
+.light-theme .contact-hero p {
+  color: var(--text-dark);
+}
+
+.light-theme .info-item {
+  background: var(--white);
+  border: 1px solid rgba(65, 105, 225, 0.1);
+}
+
+.light-theme .info-item:hover {
+  background: rgba(65, 105, 225, 0.05);
+}
+
+.light-theme .info-text h3 {
+  color: var(--text-dark);
+}
+
+.light-theme .info-text p {
+  color: var(--text-gray);
+}
+
+.light-theme .contact-form {
+  background: var(--white);
+}
+
+.light-theme .branch-card {
+  background: var(--white);
+  border: 1px solid rgba(65, 105, 225, 0.1);
+}
+
+.light-theme .branch-card h4 {
+  color: var(--primary-blue);
+}
+
+.light-theme .branch-card p {
+  color: var(--text-gray);
+}
+
+.light-theme .social-icon {
+  background: rgba(65, 105, 225, 0.1);
+  color: var(--primary-blue);
+}
+
+.light-theme .social-icon:hover {
+  background: var(--primary-blue);
+  color: var(--white);
+}
+
+/* Light Theme Admin Dashboard */
+.light-theme .admin-login {
+  background: linear-gradient(135deg, var(--dark-bg), var(--secondary-blue));
+}
+
+.light-theme .login-container {
+  background: var(--white);
+  box-shadow: var(--shadow-elegant);
+}
+
+.light-theme .admin-table th {
+  color: var(--primary-blue);
+}
+
+.light-theme .admin-table td {
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+  color: var(--text-dark);
+}
+
+.light-theme .admin-table td button {
+  color: var(--text-gray);
+}
+
+.light-theme .admin-table td button:hover {
+  color: var(--primary-blue);
+}
+
+/* Light Theme Workforce Section */
+.light-theme .workforce-cta {
+  background: linear-gradient(135deg, var(--secondary-blue), var(--darker-bg));
+}
+
+.light-theme .workforce-cta h3 {
+  color: var(--text-dark);
+}
+
+.light-theme .workforce-cta p {
+  color: var(--text-gray);
+}
+
+/* Light Theme Timeline */
+.light-theme .timeline-content {
+  background: var(--white);
+  border: 1px solid rgba(65, 105, 225, 0.1);
+}
+
+.light-theme .timeline-content h3 {
+  color: var(--text-dark);
+}
+
+.light-theme .timeline-content p {
+  color: var(--text-gray);
+}
+
+.light-theme .timeline-year {
+  color: var(--primary-blue);
+}
+
+/* Light Theme Beliefs Section */
+.light-theme .belief-card {
+  background: var(--white);
+  border: 1px solid rgba(65, 105, 225, 0.1);
+}
+
+.light-theme .belief-card h3 {
+  color: var(--text-dark);
+}
+
+.light-theme .belief-card p {
+  color: var(--text-gray);
+}
+
+.light-theme .belief-icon {
+  color: var(--primary-blue);
+}
+
+/* Light Theme Pastor Section */
+.light-theme .pastor-section {
+  background: linear-gradient(135deg, var(--dark-bg), var(--secondary-blue));
+}
+
+.light-theme .pastor-bio h2 {
+  color: var(--text-dark);
+}
+
+.light-theme .pastor-bio p {
+  color: var(--text-gray);
+}
+
+.light-theme .pastor-quote {
+  color: var(--primary-blue);
+  border-left-color: var(--primary-blue);
 }
 
 /* ========== RESPONSIVE ========== */
@@ -198,8 +737,17 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 3px;
   }
   
-  .btn {
-    padding: 12px 28px;
-    font-size: 14px;
+  .light-theme .nav-menu {
+    background: var(--white);
   }
+  
+  .light-theme .nav-menu a,
+  .light-theme .dropdown-trigger {
+    color: var(--text-dark);
+  }
+}
+
+/* ========== SMOOTH TRANSITIONS ========== */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }

@@ -4,16 +4,28 @@ import './MarqueeGrid.css';
 
 const marqueeImages = [
   { 
+    src: '/images/grid/Sunday-service-.jpeg', 
+    label: 'Sunday Service',
+    //  description: 'Sunday Service',
+    category: 'Free Transportaion'
+  },
+  { 
+    src: '/images/grid/Sunday-service.jpeg', 
+    label: 'Sunday Service',
+    description: '29th March, 2026',
+    category: 'Making the most of Time and Seasons'
+  },
+  { 
     src: '/images/grid/mpa1.jpeg', 
     label: 'Dr. David Ogbueli',
     description: 'Sunday Service',
-    category: 'Activating the riches of God'
+    category: 'Activating the riches of God"s redemption.'
   },
   { 
     src: '/images/grid/ss1.jpeg', 
-    label: 'Welcome to Church',
+    // label: '',
     description: 'We are happy to have you!',
-    category: '29th March, 2026'
+    category: 'Welcome to Church!'
   },
   { 
     src: '/images/grid/ss2.jpeg', 
@@ -47,381 +59,105 @@ const marqueeImages = [
   },
   { 
     src: '/images/grid/praiz12.jpeg', 
-    label: 'Praise',
-    description: 'Enter his court with praise',
-    category: 'In the presence of God their is fullness of joy'
+    label: 'Enter his gate with thanksgiving...',
+    // description: '',
+    category: 'PRAISE'
   },
   { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Worship Night',
-    description: 'Sunday Service',
-    category: '29th March, 2026'
+    src: '/images/grid/praiz14.jpeg', 
+    label: '...and into his court with praise.',
+    // description: '',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Community Impact',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
+    src: '/images/grid/praiz15.jpeg', 
+    // // label: 'Community Impact',
+    // description: 'Free Transportation',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service.jpeg', 
+    src: '/images/grid/praiz5.jpeg', 
     // label: 'The Edge Youth',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
+    //  description: 'Sunday Service',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Baptism Service',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
+    src: '/images/grid/praiz16.jpeg', 
+    // // label: 'Baptism Service',
+    // description: 'Free Transportation',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Prayer Meeting',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
+    src: '/images/grid/mpa3.jpeg', 
+    // // label: 'Prayer Meeting',
+    //  description: 'Sunday Service',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service-.jpeg', 
+    src: '/images/grid/wor10.jpeg', 
+    label: 'We bow before you Lord...',
+    // description: '',
+    category: 'WORSHIP'
+  },
+  { 
+    src: '/images/grid/wor17.jpeg', 
+    label: '...and we honour you...',
+    //  description: '',
+    // category: '29th March, 2026'
+  },
+  { 
+    src: '/images/grid/wor2.jpeg', 
+    label: '... with lifted hands...',
+    // description: '',
+    // category: '29th March, 2026'
+  },
+  { 
+    src: '/images/grid/wor15.jpeg', 
+    label: '...worship you...',
+    // description: '',
+    // category: '29th March, 2026'
+  },
+  { 
+    src: '/images/grid/wor9.jpeg', 
+    // // label: 'Community Impact',
+    // description: 'Free Transportation',
+    // category: '29th March, 2026'
+  },
+  { 
+    src: '/images/grid/mpa4.jpeg', 
+    // // label: 'The Edge Youth',
+    //  description: 'Sunday Service',
+    // category: '29th March, 2026'
+  },
+  { 
+    src: '/images/grid/word1.jpeg', 
+    label: 'Activating the riches of God"s redemption.',
+    description: 'I am rich in Christ!',
+    category: 'WORD'
+  },
+  { 
+    src: '/images/grid/word2.jpeg', 
+    // // label: 'Prayer Meeting',
+    //  description: 'Sunday Service',
+    // category: '29th March, 2026'
+  },
+  { 
+    src: '/images/grid/word4.jpeg', 
     // label: 'Children\'s Ministry',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
+    // description: 'Free Transportation',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Women of Impact',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
+    src: '/images/grid/word5.jpeg', 
+    // // label: 'Women of Impact',
+    //  description: 'Sunday Service',
+    // category: '29th March, 2026'
   },
   { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Men of Honour',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Worship Night',
-    description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Community Impact',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'The Edge Youth',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Baptism Service',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Prayer Meeting',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Children\'s Ministry',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Women of Impact',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Men of Honour',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Worship Night',
-    description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Community Impact',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'The Edge Youth',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Baptism Service',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Prayer Meeting',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Children\'s Ministry',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Women of Impact',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Men of Honour',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Worship Night',
-    description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Community Impact',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'The Edge Youth',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Baptism Service',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Prayer Meeting',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Children\'s Ministry',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Women of Impact',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Men of Honour',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Worship Night',
-    description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Community Impact',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'The Edge Youth',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Baptism Service',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Prayer Meeting',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Children\'s Ministry',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Women of Impact',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Men of Honour',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Worship Night',
-    description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Community Impact',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'The Edge Youth',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Baptism Service',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Prayer Meeting',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Children\'s Ministry',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Women of Impact',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Men of Honour',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Worship Night',
-    description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Community Impact',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'The Edge Youth',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Baptism Service',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Prayer Meeting',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Children\'s Ministry',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Women of Impact',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Men of Honour',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'The Edge Youth',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Baptism Service',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Prayer Meeting',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Children\'s Ministry',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service.jpeg', 
-    // label: 'Women of Impact',
-     description: 'Sunday Service',
-    category: '29th March, 2026'
-  },
-  { 
-    src: '/images/grid/Sunday-service-.jpeg', 
-    // label: 'Men of Honour',
-    description: 'Free Transportation',
-    category: '29th March, 2026'
+    src: '/images/grid/word7.jpeg', 
+    // // label: 'Men of Honour',
+    // description: 'Free Transportation',
+    // category: '29th March, 2026'
   },
 ];
 
